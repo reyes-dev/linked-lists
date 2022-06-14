@@ -31,7 +31,7 @@ class LinkedList
     i = 1
 
     return 0 if node.nil?
-    
+
     while (node = node.next_node)
       i = i + 1
     end
@@ -39,6 +39,9 @@ class LinkedList
   end
   # Returns the first Node object in the list
   def head
+    node = @head
+
+    return node if !node.nil?
   end
   # Returns the last Node object in the list
   def tail
@@ -81,4 +84,4 @@ end
 
 list = LinkedList.new
 
-p list.size
+puts list.head
