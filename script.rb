@@ -95,6 +95,17 @@ class LinkedList
   end
   # Returns the INDEX of the Node object containing the passed value, or nil if not found
   def find(value)
+    node = @head
+    i = 0
+    
+    return nil if !contains?(value)
+
+    until node.value == value
+      node = node.next_node
+      i = i + 1
+    end
+
+    i
   end
   # Shows Node objects as strings and prints them out to preview to the console
   def to_s
@@ -122,4 +133,5 @@ list.append(48)
 list.append(92)
 list.prepend(8)
 
-p list.contains?(20)
+p list
+p list.find(92)
