@@ -136,12 +136,6 @@ class LinkedList
         node.next_node = Node.new(value)
         node = node.next_node
         node.next_node = temp
-        # while i < n
-        #   temp = node.next_node
-        #   node = node.next_node
-        #   node.next_node = temp
-        #   i = i + 1
-        # end
       end
 
       node = node.next_node
