@@ -109,6 +109,16 @@ class LinkedList
   end
   # Shows Node objects as strings and prints them out to preview to the console
   def to_s
+    node = @head
+    i = 0
+
+    while (i < size)
+      print "#{node.value} -> "
+      i = i + 1
+      node = node.next_node
+    end
+
+    print "nil"
   end
   # Inserts a new Node objects with the given VALUE at the given INDEX
   def insert_at(value, index)
@@ -129,9 +139,8 @@ end
 
 list = LinkedList.new
 list.append(20)
-list.append(48)
-list.append(92)
 list.prepend(8)
+list.append(25)
+list.append(30)
 
-p list
-p list.find(92)
+list.to_s
