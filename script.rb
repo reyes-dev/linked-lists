@@ -52,6 +52,18 @@ class LinkedList
   end
   # Returns the Node object at the given INDEX
   def at(index)
+    node = @head
+
+    return "There's no nodes!" if node.nil?
+    return "There's no node there." if size <= index
+    return node if index == 0
+
+    while (index > 0)
+      node = node.next_node
+      index = index - 1
+    end
+
+    node
   end
   # Removes the last Node object from the list (the tail?)
   def pop
@@ -83,5 +95,6 @@ class Node
 end
 
 list = LinkedList.new
+list.append(20)
 
-puts list.head
+p list.at(0)
