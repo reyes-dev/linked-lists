@@ -81,6 +81,17 @@ class LinkedList
   end
   # Returns true if the passed value is in the list, otherwise returns false
   def contains?(value)
+    node = @head
+    has_it = false
+    i = 0
+
+    while (i < size)
+      has_it = true if node.value == value
+      node = node.next_node
+      i = i + 1
+    end
+
+    has_it
   end
   # Returns the INDEX of the Node object containing the passed value, or nil if not found
   def find(value)
@@ -109,17 +120,6 @@ list = LinkedList.new
 list.append(20)
 list.append(48)
 list.append(92)
+list.prepend(8)
 
-p list
-
-p list.pop
-
-p list
-
-p list.pop
-
-p list
-
-p list.pop
-
-p list
+p list.contains?(20)
