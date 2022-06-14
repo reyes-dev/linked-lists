@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class LinkedList
   attr_accessor :name
 
@@ -97,7 +99,7 @@ class LinkedList
   def find(value)
     node = @head
     i = 0
-    
+
     return nil if !contains?(value)
 
     until node.value == value
@@ -118,10 +120,33 @@ class LinkedList
       node = node.next_node
     end
 
-    print "nil"
+    # print "nil"
   end
   # Inserts a new Node objects with the given VALUE at the given INDEX
-  def insert_at(value, index)
+  def insert_at(value, index)    
+    n = size
+    node = @head
+    i = 0
+
+    return prepend(value) if index == 0
+
+    until i >= n
+      if i == index - 1
+        temp = node.next_node
+        node.next_node = Node.new(value)
+        node = node.next_node
+        node.next_node = temp
+        # while i < n
+        #   temp = node.next_node
+        #   node = node.next_node
+        #   node.next_node = temp
+        #   i = i + 1
+        # end
+      end
+
+      node = node.next_node
+      i = i + 1
+    end
   end
   # Removes the Node object at the given INDEX
   def remove_at(index)
@@ -139,8 +164,10 @@ end
 
 list = LinkedList.new
 list.append(20)
-list.prepend(8)
-list.append(25)
-list.append(30)
+list.append(40)
+list.append(50)
+list.append(60)
 
-list.to_s
+list.insert_at(30, 1)
+
+p list.to_s
