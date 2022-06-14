@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 class LinkedList
   attr_accessor :name
 
@@ -119,8 +117,6 @@ class LinkedList
       i = i + 1
       node = node.next_node
     end
-
-    # print "nil"
   end
   # Inserts a new Node objects with the given VALUE at the given INDEX
   def insert_at(value, index)    
@@ -144,6 +140,22 @@ class LinkedList
   end
   # Removes the Node object at the given INDEX
   def remove_at(index)
+    n = size
+    node = @head
+    i = 0
+
+    until i >= n
+      if i == index - 1
+        node.next_node = node.next_node.next_node
+        break
+      elsif index == 0
+        @head = node.next_node
+        break
+      end
+
+      node = node.next_node
+      i = i + 1
+    end
   end
 end
 
@@ -162,6 +174,6 @@ list.append(40)
 list.append(50)
 list.append(60)
 
-list.insert_at(30, 1)
+list.remove_at(0)
 
 p list.to_s
