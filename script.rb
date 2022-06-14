@@ -67,6 +67,17 @@ class LinkedList
   end
   # Removes the last Node object from the list (the tail?)
   def pop
+    node = @head
+    i = 0
+
+    @head = nil if node.next_node.nil?
+
+    while (i < size - 2)
+      node = node.next_node
+      i = i + 1
+    end
+
+    node.next_node = nil
   end
   # Returns true if the passed value is in the list, otherwise returns false
   def contains?(value)
@@ -96,5 +107,19 @@ end
 
 list = LinkedList.new
 list.append(20)
+list.append(48)
+list.append(92)
 
-p list.at(0)
+p list
+
+p list.pop
+
+p list
+
+p list.pop
+
+p list
+
+p list.pop
+
+p list
