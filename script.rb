@@ -15,14 +15,15 @@ class LinkedList
   end
   # Adds a new Node objecting containing a value to the START of the list
   def prepend(value)
-    # Assign a new node as the head and tail
-    #if @head.nil?
-      #@head = Node.new(value)
-      #@tail = @head
-    # If there's already a node object in head 
-    #else # Head pointer holds an entry
-      #@head.next =  
-    #end
+    #Assign a new node as the head and tail
+    if @head.nil?
+      @head = Node.new(value)
+    # If there's already a node object in head
+    else # Head pointer holds an entry
+      temp = @head
+      @head = Node.new(value)
+      @head.next_node = temp
+    end
   end
   # Returns the total number of Node objects in the list
   def size
@@ -71,8 +72,8 @@ end
 
 list = LinkedList.new
 list.append(47)
-list.append(22)
-list.append(6)
-list.append(3)
+list.prepend(33)
+list.prepend(22)
+list.prepend(11)
 
 p list
