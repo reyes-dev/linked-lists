@@ -27,6 +27,15 @@ class LinkedList
   end
   # Returns the total number of Node objects in the list
   def size
+    node = @head
+    i = 1
+
+    return 0 if node.nil?
+    
+    while (node = node.next_node)
+      i = i + 1
+    end
+      i
   end
   # Returns the first Node object in the list
   def head
@@ -71,9 +80,5 @@ class Node
 end
 
 list = LinkedList.new
-list.append(47)
-list.prepend(33)
-list.prepend(22)
-list.prepend(11)
 
-p list
+p list.size
